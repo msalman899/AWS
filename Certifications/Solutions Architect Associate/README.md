@@ -1,4 +1,4 @@
-*AWS SAA Certification - Road Map*
+## AWS SAA Certification - Road Map
 
 -	Video courses
 	- Acloud guru (good for foundation) (Udemy)
