@@ -1,5 +1,5 @@
  import boto3
- import datetime
+ from datetime import *
  s3 = boto3.client('s3')
  
  files = s3.list_objects_v2(Bucket='my-bucket')['Contents']
