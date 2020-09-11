@@ -4,8 +4,20 @@ import sys
 import boto3
 from botocore.exceptions import ClientError
 import elasticbeanstalk
-import common.boto3Session
+import boto3Session
 
+
+def checkTraffic(r53_client):
+    r53_resource_records = r53_client.list_resource_record_sets(HostedZoneId='string')
+    
+    for record in r53_resource_records:
+        if record['Name'] == recordset_name and record['SetIdentifier'] == commit_id:
+            if record['weight'] == 100:
+                return True
+            return False
+            break
+        return "Not Exist"
+    
 
 def main():
     # set up boto3 session
@@ -21,11 +33,26 @@ def main():
 
     # initiialize another object that has more advance functions, just pass in the boto3 client object
     #eb = Elasticbeanstalk(eb_environment)
-
+    
+    global commit_id
+    global recordset_name
+    
     application_name=""
     environment_name=""
     instance=""
+    environment=""
+    commit_id=""
+    recordset_name=environment+"."+application_name+"."+commit_id
 
+    #check traffic
+    traffic = checkTraffic(r53_client)
+    if traffic:
+        print("This Env is serving 100% Traffic Scale In/Out is not allowed")
+        sys.exit(1)    
+    elif traffic == "Not Exist":
+        print("Route53 RecordSet Not Found")
+
+    # updating beanstalk environment
     try:
         eb_update_response = eb_environment.update_environment(
             ApplicationName=application_name,
