@@ -1,7 +1,5 @@
-import argparse
 import os
 import sys
-import boto3
 
 #need to provide boto3 client object
 
