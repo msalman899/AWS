@@ -21,10 +21,7 @@ def checkTraffic(r53_client):
 
 def main():
     # set up boto3 session
-    custom_session = boto3Session("eu-west-1","sandbox")
-    if not custom_session:
-        print("Unable to create boto3 session, please define region")
-        sys.exit(1)
+    custom_session = Customsession(region="eu-west-1",profile="name",)
 
     # elasticbeanstalk client object
     eb_environment = custom_session.client('elasticbeanstalk')
