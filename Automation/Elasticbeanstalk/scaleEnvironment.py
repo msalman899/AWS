@@ -4,7 +4,7 @@ import sys
 import boto3
 from botocore.exceptions import ClientError
 import elasticbeanstalk
-import boto3Session
+from common.boto3Session import *
 
 
 def checkTraffic(r53_client):
