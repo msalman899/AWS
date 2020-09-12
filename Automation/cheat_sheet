@@ -1,0 +1,19 @@
+======================
+boto3 session creation
+======================
+
+import boto3
+
+# Using the default session
+sqs = boto3.client('sqs')
+s3 = boto3.resource('s3')
+
+import boto3
+import boto3.session
+
+# Create your own session
+my_session = boto3.session.Session()
+
+# Now we can create low-level clients or resource clients from our custom session
+sqs = my_session.client('sqs')
+s3 = my_session.resource('s3')
