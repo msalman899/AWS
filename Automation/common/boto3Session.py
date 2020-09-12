@@ -9,6 +9,11 @@ class Customsession:
         self.region = region
         self.profile = profile
         self.session = self.get_session()
+        if self.session:
+            print("session created")
+        else:
+            print("Unable to create boto3 session, please define region")
+            sys.exit(1)
 
     def get_session(self):
         if not self.region:
