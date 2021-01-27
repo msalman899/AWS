@@ -5,8 +5,8 @@ resource "aws_lambda_function" "lambda_function" {
   runtime          = var.runtime
   timeout          = var.timeout
   memory_size      = var.memory_size
-  filename         = var.filename
-  source_code_hash = var.source_code_hash
+  filename         = "${path.module}/${var.function_name}.zip"
+  source_code_hash = filebase64sha256("${path.module}/${var.function_name}.zip")
   vpc_config {
     security_group_ids = var.security_group_ids
     subnet_ids         = var.subnet_ids
