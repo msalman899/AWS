@@ -3,7 +3,7 @@ Ensure that IAM permissions for the lambda should only include permissions neede
 Make assumptions as necessary, but please include a section for assumptions in your solution.
 Tools: Terraform, Python/any other language
 SAMPLE:
-<br/><br/>
+
 +-------------+------------------+------+
 |     IP      |   Description    | Port |
 +-------------+------------------+------+
