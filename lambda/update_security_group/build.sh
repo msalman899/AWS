@@ -7,11 +7,11 @@
 #fi
 
 #echo "Building Lambda Source File for function $1"
-#mkdir -p src/package
 # sudo apt-get update -y
 # sudo apt-get install -y python3-pip
 # pip3 install -r requirements.txt -t src/package/
 
+mkdir -p src/package
 pip3 install -r requirements.txt -t src/package/
 
 #cd src && zip -FSr ../${var.filename}.zip *
