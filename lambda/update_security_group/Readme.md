@@ -11,3 +11,11 @@ SAMPLE:
 | 192.168.9.2 | islamabad-office | 443  |
 +-------------+------------------+------+
 Security Group Name: my-vpc-https-sg
+
+
+#####
+
+terraform init
+terraform plan
+terraform apply
+
